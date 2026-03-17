@@ -210,7 +210,7 @@ Prompt Master includes specific profiles for 20+ tools. For anything not on the 
 
 <details>
 
-<summary>View all 20+ tool profiles</summary>
+<summary><h3> View all 20+ tool profiles </h3></summary>
 
 | Tool | Category | What Prompt Master Fixes |
 |------|----------|--------------------------|
