@@ -1,7 +1,3 @@
-<div align="center">
-   <h1>Prompt Master</h1>
-</div>
-
 ![](https://s6.imgcdn.dev/YvLVug.png)
 
 <br/>
@@ -14,26 +10,17 @@ A Claude skill that writes the accurate prompts for any AI tool. Zero tokens or 
 
 ## 🚀 Installation
 
-### Recommended Claude.ai (browser)
+### RECOMMENDED - Claude.ai (browser)
 
 1. Download this repo as a ZIP
 2. Go to **claude.ai → Sidebar → Customize → Skills → Upload a Skill**
 
 
-### Clone directly into Claude Code skills directory
+### OR Clone directly into Claude Code skills directory (Not Suggested)
 
 ```bash
 mkdir -p ~/.claude/skills
 git clone https://github.com/nidhinjs/prompt-master.git ~/.claude/skills/prompt-master
-```
-
-### Manual install / update (only the skill file)
-
-If you already have this repo cloned (or downloaded `SKILL.md`), copy the skill file into Claude Code's skills directory:
-
-```bash
-mkdir -p ~/.claude/skills/prompt-master
-cp SKILL.md ~/.claude/skills/prompt-master/
 ```
 
 ## 🔥 The Problem This Solves
@@ -209,29 +196,43 @@ Done When:
 Prompt Master includes specific profiles for 20+ tools. For anything not on the list, it uses a **Universal Fingerprint**: 4 questions that let it write a quality prompt for any AI system it has never seen before.
 
 <details>
-
-<summary><h3> Click to view all 20+ tool profiles </h3></summary>
+<summary><h3> Click to view all 30+ tool profiles </h3></summary>
 
 | Tool | Category | What Prompt Master Fixes |
 |------|----------|--------------------------|
 | **Claude** | Reasoning LLM | Removes padding, adds XML structure, specifies length |
-| **ChatGPT / GPT-4o** | Reasoning LLM | Strong role assignment, explicit format, numeric constraints |
+| **ChatGPT / GPT-5.x** | Reasoning LLM | Output contract, verbosity control, completion criteria |
 | **Gemini 2.x** | Reasoning LLM | Grounding anchors, citation rules, format locks |
-| **o1 / o3** | Thinking LLM | Short clean instructions only — never adds CoT (they think internally) |
+| **o3 / o4-mini** | Thinking LLM | Short clean instructions only — never adds CoT (they think internally) |
+| **Ollama** | Local LLM | Asks which model is loaded, includes system prompt for Modelfile |
+| **Qwen 2.5 / Qwen3** | Open-weight LLM | Chat template format, thinking vs non-thinking mode detection |
 | **Local models (Llama, Mistral)** | Open-weight LLM | Shorter prompts, simpler structure, no complex nesting |
+| **DeepSeek-R1** | Reasoning LLM | Short clean instructions, strips CoT, suppresses thinking output if needed |
 | **Claude Code** | Agentic AI | Stop conditions, file scope, checkpoint output |
-| **Cursor / Windsurf** | IDE AI | File path, function name, do-not-touch list |
+| **Cursor / Windsurf** | IDE AI | File path, function name, do-not-touch list, sequential prompt guidance |
 | **GitHub Copilot** | Autocomplete AI | Exact function contract as docstring |
+| **Antigravity** | Agentic IDE | Task-based prompting, Artifact verification, autonomy level |
 | **Bolt / v0 / Lovable** | Full-stack generator | Stack spec, version, what NOT to scaffold |
+| **Figma Make** | Full-stack generator | Component name references, frame-to-code scope |
+| **Google Stitch** | Full-stack generator | Interface goal over implementation, Material Design 3 spec |
 | **Devin / SWE-agent** | Autonomous agent | Starting state, target state, stop conditions |
+| **Manus** | Autonomous agent | Task outcome focus, permission scope, memory anchors |
+| **OpenAI Computer Use** | Computer-use agent | Screen state, allowed apps, stop before irreversible actions |
+| **Perplexity Computer** | Computer-use agent | Artifact-first prompting, scoped permissions, verification steps |
+| **OpenClaw** | Computer-use agent | Conversational precision, persistent memory, security constraints |
 | **Perplexity / SearchGPT** | Search AI | Mode spec: search vs analyze vs compare |
 | **Midjourney** | Image AI | Comma-separated descriptors, parameters, negative prompts |
-| **DALL-E 3** | Image AI | Prose description, text exclusion instruction — edit vs generate detection |
+| **DALL-E 3** | Image AI | Prose description, text exclusion — edit vs generate detection |
 | **Stable Diffusion** | Image AI | Weight syntax `(word:1.3)`, CFG guidance, mandatory negative prompt |
+| **SeeDream** | Image AI | Art style first, mood and atmosphere descriptors, negative prompt |
 | **ComfyUI** | Image AI | Positive/negative node split, checkpoint-specific syntax |
+| **Meshy / Tripo / Rodin** | 3D AI | Style + export format + polygon budget + rig requirements |
+| **BlenderGPT** | 3D AI | Python script output, Blender version, scene context |
+| **Unity AI** | 3D / Game AI | Game genre, platform target, mechanic description over code |
 | **Sora / Runway** | Video AI | Camera movement, duration, cut style |
+| **LTX / Dream Machine / Kling** | Video AI | Cinematic language, motion intensity, style reference |
 | **ElevenLabs** | Voice AI | Emotion, pacing, emphasis, speech rate |
-| **Zapier / Make** | Workflow automation | Trigger app + event, action app + field mapping |
+| **Zapier / Make / n8n** | Workflow automation | Trigger app + event, action app + field mapping |
 
 </details>
 
@@ -386,28 +387,20 @@ This is the single biggest fix for long sessions. Most wasted re-prompts come fr
 
 ---
 
-## 📚 References
-
-- [Anthropic Prompt Engineering Guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview): Primary source for Claude-specific patterns
-- [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering): GPT-4o best practices
-- [Cursor Documentation](https://docs.cursor.com): IDE-specific context patterns
-- [Midjourney Prompt Reference](https://docs.midjourney.com/docs/prompts): Image AI parameter guide
-
----
-
 ## ℹ️ Version History
 
-- **1.4.0** — Added reference image editing detection, ComfyUI support, Prompt Decompiler mode. Fixed trigger description to invoke correctly in Claude Code. 3 new templates added to references folder.
-- **1.3.0** — Rebuilt around PAC2026 positional structure (30/55/15). Silent routing replaces user-facing framework selection. References folder introduced.
-- **1.2.0** — Restructured for attention architecture. Removed fabrication-prone techniques (ToT, GoT, USC, prompt chaining). Templates and patterns moved to references folder.
-- **1.1.0** — Expanded tool coverage, added memory block system, 35 patterns
+- **1.5.0** — Added more tool routing. New Agentic AI and 3D Model AI routing added. Fixed description to 189 chars. Removed token estimate from output. Added instruction layer and copywriting placeholders
+- **1.4.0** — Added reference image editing detection, ComfyUI support, Prompt Decompiler mode. Fixed trigger description to invoke correctly in Claude Code. 3 new templates added to references folder
+- **1.3.0** — Rebuilt around PAC2026 positional structure (30/55/15). Silent routing replaces user-facing framework selection. References folder introduced
+- **1.2.0** — Restructured for attention architecture. Removed fabrication-prone techniques (ToT, GoT, USC, prompt chaining). Templates and patterns moved to references folder
+- **1.1.0** — Expanded tool coverage, added memory block system, 35 credit killing patterns
 - **1.0.0** — Initial release
 
 ---
 
 ## 📄 License
 
-MIT: see [LICENSE](LICENSE) for details.
+MIT: See [LICENSE](LICENSE) for details.
 
 ---
 
